@@ -68,7 +68,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
             Product shoes = productCreator("shoes", null, "shoes", "shoes", 25.35);
 
 
-
             // Customers
             Customer anvar = customerCreator("Anvar", "UZB", "Tashkent", "+998991234567");
             Customer shavkat = customerCreator("Shavkat", "UZB", "Tashkent", "+998991234567");
