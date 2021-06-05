@@ -40,7 +40,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         /** Test data **/
-        if (hibernate_status.equals("create")){
+//        if (hibernate_status.equals("create")){
 
 
             // Categories
@@ -129,7 +129,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
 
 
-        }
+//        }
 
 
     }
