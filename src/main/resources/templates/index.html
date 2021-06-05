@@ -166,14 +166,14 @@
 
         <div class="form-group col-9">
             <label for="quantity">Enter quantity</label>
-            <input class="form-control" type="number" placeholder="quantity" id="quantity">
+            <input class="form-control" type="number" placeholder="quantity(0-500)" id="quantity">
         </div>
 
         <button onclick="{
             let customerId=document.getElementById('customerId').value;
             let selectProductIdByPost=document.getElementById('selectProductIdByPost').value;
             let quantity=document.getElementById('quantity').value;
-            if (quantity<0) quantity=0;
+            if (quantity<0||quantity>500) quantity=0;
             axios.post('/api/order?customer_id='+customerId+'&product_id='+selectProductIdByPost+'&quantity='+quantity)
             .then(function(response) {
 
