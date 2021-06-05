@@ -15,5 +15,5 @@ public class PaymentDto {
     private Integer id;
     private Timestamp time;
     private Double amount;
-    private InvoiceDto invoiceDto;
+    private InvoiceDto invoice;
 }

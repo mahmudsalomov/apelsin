@@ -1,9 +1,6 @@
 package uz.bank.apelsin.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import uz.bank.apelsin.model.template.AbsEntityInteger;
 
@@ -18,8 +15,11 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Payment extends AbsEntityInteger {
 
+    @OrderBy
+    @CreationTimestamp
     @Column(updatable = false)
     private Timestamp time;
 

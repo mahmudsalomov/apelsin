@@ -13,7 +13,7 @@ import java.sql.Date;
 @Builder
 public class InvoiceDto {
     private Integer id;
-    private OrderDto orderDto;
+    private OrderDto order;
     private Double amount;
     private Date issued;
     private Date due;

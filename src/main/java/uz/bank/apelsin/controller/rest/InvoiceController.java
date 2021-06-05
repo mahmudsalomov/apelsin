@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uz.bank.apelsin.service.CustomerService;
+import uz.bank.apelsin.service.InvoiceService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/customer")
-public class CustomerController {
-
+@RequestMapping("api/invoice")
+public class InvoiceController {
     @Autowired
-    private CustomerService customerService;
+    private InvoiceService invoiceService;
 
     /** Extra **/
+
     @GetMapping("/list")
     public HttpEntity<?> getAll(){
-        return ResponseEntity.ok(customerService.getAll());
+        return ResponseEntity.ok(invoiceService.getAll());
     }
 }

@@ -1,9 +1,6 @@
 package uz.bank.apelsin.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import uz.bank.apelsin.model.template.AbsEntityInteger;
 
 import javax.persistence.Column;
@@ -16,6 +13,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Invoice extends AbsEntityInteger {
     @OneToOne
     private Order order;

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link href="webjars/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<body onload="all()" style="background-color: lightgray">
+<nav class="navbar navbar-expand-lg navbar-light text-center d-flex justify-content-center">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/all">All data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/swagger-ui.html">Swagger</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/mahmudsalomov/apelsin">Github</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section class="container text-center justify-content-center d-flex">
+    <div class="row text-center">
+        <h1 class="col-12">Task Apelsin</h1>
+
+        <h5 class="col-12">
+            1.
+            <a class="btn btn-success col-12 col-md-6" href="/api/expired_invoices">/api/expired_invoices</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            2.
+            <a class="btn btn-success col-12 col-md-6" href="/api/wrong_date_invoices">/api/wrong_date_invoices</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            3.
+            <a class="btn btn-success col-12 col-md-6" href="/api/orders_without_details">/api/orders_without_details</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            4.
+            <a class="btn btn-success col-12 col-md-6" href="/api/customers_without_orders">/api/customers_without_orders</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            5.
+            <a class="btn btn-success col-12 col-md-6" href="/api/customers_last_orders">/api/customers_last_orders</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            6.
+            <a class="btn btn-success col-12 col-md-6" href="/api/overpaid_invoices">/api/overpaid_invoices</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            7.
+            <a class="btn btn-success col-12 col-md-6" href="/api/high_demand_products">/api/high_demand_products</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            8.
+            <a class="btn btn-success col-12 col-md-6" href="/api/bulk_products">/api/bulk_products</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            9.
+            <a class="btn btn-success col-12 col-md-6" href="/api/number_of_products_in_year">/api/number_of_products_in_year</a>
+        </h5>
+
+
+        <h5 class="col-12">
+            10.
+            <a class="btn btn-success col-12 col-md-6" href="/api/orders_without_invoices">/api/orders_without_invoices</a>
+        </h5>
+
+
+
+    </div>
+</section>
+
+
+<section class="container text-center justify-content-center d-flex mt-5 mb-5">
+    <div class="row text-center d-flex justify-content-center">
+        <h1 class="col-12">Other task apis</h1>
+
+        <h5 class="col-12  mt-3">GET /category/list</h5>
+        <a class="col-4 btn btn-success mb-5" href="/api/category/list">api/category/list</a>
+
+
+
+        <h5 class="col-12  mt-3">GET /category?product_id={product_id}</h5>
+            <div class="form-group col-9">
+                <label for="selectProductId">Select product id</label>
+                <select class="form-control" id="selectProductId">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        <button onclick="{
+          window.location='/api/category?product_id='+document.getElementById('selectProductId').value
+        }" class="col-4 btn btn-success mb-5">api/category/list</button>
+
+
+        <h5 class="col-12  mt-3">POST /order
+            {
+            customer_id : c_id,
+            product_id: p_id,
+            quantity: q
+            }
+            Response
+            {
+            status : “status_string” – “SUCCESS” or “FAILED” string,
+            invoice_number: created_invoice_id
+            }</h5>
+        <div class="form-group col-9">
+            <label for="customerId">Select customer id</label>
+            <select class="form-control" id="customerId">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+
+        <div class="form-group col-9">
+            <label for="selectProductIdByPost">Select product id</label>
+            <select class="form-control" id="selectProductIdByPost">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="form-group col-9">
+            <label for="quantity">Enter quantity</label>
+            <input class="form-control" type="number" placeholder="quantity" id="quantity">
+        </div>
+
+        <button onclick="{
+            let customerId=document.getElementById('customerId').value;
+            let selectProductIdByPost=document.getElementById('selectProductIdByPost').value;
+            let quantity=document.getElementById('quantity').value;
+            if (quantity<0) quantity=0;
+            axios.post('/api/order?customer_id='+customerId+'&product_id='+selectProductIdByPost+'&quantity='+quantity)
+            .then(function(response) {
+
+                alert(JSON.stringify(response.data))
+                location.reload()
+            })
+            .catch(function(error) {
+              alert(JSON.stringify(error))
+            })
+
+        }" class="col-4 btn btn-success mb-5">/api/order</button>
+
+
+        <h5 class="col-12 mt-3">GET order/details?order_id={order_id}</h5>
+        <div class="form-group col-9">
+            <label for="order_id">Select order id</label>
+            <select class="form-control" id="order_id">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <button onclick="{
+            window.location=
+          '/api/order/details?order_id='
+          +document.getElementById('order_id').value
+        }" class="col-4 btn btn-success mb-5">order/details</button>
+
+
+        <h5 class="col-12 mt-3">POST /payment
+            {
+            Invoice_id: invoice_id
+            }
+            Response
+            {
+            Payment_status:  “status_string” – “SUCCESS” or “FAILED” string,
+            Payment_details: {
+            All payments table rows of created payment
+            }
+            }</h5>
+        <div class="form-group col-9">
+            <label for="invoice_id">Select invoice id</label>
+            <select class="form-control" id="invoice_id">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+
+        <button onclick="{
+            let invoice_id=document.getElementById('invoice_id').value;
+
+            axios.post('/api/payment?invoice_id='+invoice_id)
+            .then(function(response) {
+                console.log(response)
+                alert(JSON.stringify(response.data))
+                location.reload()
+            })
+        }" class="col-4 btn btn-success mb-5">/api/payment</button>
+
+
+    </div>
+
+</section>
+<script>
+    function all() {
+
+        let invoice_select="";
+        axios.get("/api/invoice/list")
+        .then(function (response) {
+            let data=JSON.parse(JSON.stringify(response.data.object))
+            for (let i = 0; i < data.length; i++) {
+                invoice_select+="<option>"+data[i].id+"</option>"
+            }
+            document.getElementById('invoice_id').innerHTML=invoice_select;
+
+        })
+
+
+
+        let order_select="";
+        axios.get("/api/order/list")
+            .then(function (response) {
+                let data=JSON.parse(JSON.stringify(response.data.object))
+                for (let i = 0; i < data.length; i++) {
+                    order_select+="<option>"+data[i].id+"</option>"
+                }
+                document.getElementById('order_id').innerHTML=order_select;
+
+            })
+        let product_select="";
+        axios.get("/api/product/list")
+            .then(function (response) {
+                console.log(response)
+                console.log(response.data)
+                console.log(response.data.object)
+                let data=JSON.parse(JSON.stringify(response.data.object))
+                console.log(data.length)
+                for (let i = 0; i < data.length; i++) {
+                    product_select+="<option>"+data[i].id+"</option>"
+                }
+                console.log(product_select)
+                document.getElementById('selectProductId').innerHTML=product_select;
+                document.getElementById('selectProductIdByPost').innerHTML=product_select;
+
+            })
+        let customer_select="";
+        axios.get("/api/customer/list")
+            .then(function (response) {
+                let data=JSON.parse(JSON.stringify(response.data.object))
+                for (let i = 0; i < data.length; i++) {
+                    customer_select+="<option>"+data[i].id+"</option>"
+                }
+                document.getElementById('customerId').innerHTML=customer_select;
+
+            })
+
+
+    }
+</script>
+</body>
+</html>

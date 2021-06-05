@@ -88,9 +88,9 @@ public class CategoryService {
     public ApiResponse getCategoryByProductId(Integer product_id){
         try {
             Optional<Product> productOptional = productRepository.findById(product_id);
-            if (productOptional.isPresent())
+            if (productOptional.isPresent()&&productOptional.get().getCategory()!=null)
                 return converter.apiSuccess(productOptional.get().getCategory());
-            return converter.apiError();
+            return converter.apiError("Category not found!");
         }catch (Exception e){
             e.printStackTrace();
             return converter.apiError();

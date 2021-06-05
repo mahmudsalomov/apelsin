@@ -1,9 +1,6 @@
 package uz.bank.apelsin.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import uz.bank.apelsin.model.template.AbsEntityInteger;
 
 import javax.persistence.Entity;
@@ -14,6 +11,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Detail extends AbsEntityInteger {
 
     @ManyToOne

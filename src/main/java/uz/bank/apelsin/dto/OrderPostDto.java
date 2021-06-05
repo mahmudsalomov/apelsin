@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DetailDto {
-    private Integer id;
-    private Integer order_id;
+public class OrderPostDto {
+    private Integer customer_id;
     private Integer product_id;
-    private Short quantity;
-    private String product_name;
+    private Double quantity;
 }

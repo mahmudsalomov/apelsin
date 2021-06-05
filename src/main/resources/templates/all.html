@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link href="webjars/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<body style="background-color: lightgray">
+<nav class="navbar navbar-expand-lg navbar-light text-center d-flex justify-content-center">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/all">All data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/swagger-ui.html">Swagger</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/mahmudsalomov/apelsin">Github</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section class="container text-center justify-content-center d-flex">
+    <div class="row text-center d-flex justify-content-center">
+        <h1 class="col-12">All data</h1>
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/category/list">/api/category/list</a>
+
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/product/list">/api/product/list</a>
+
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/customer/list">/api/customer/list</a>
+
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/order/list">/api/order/list</a>
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/detail/list">/api/detail/list</a>
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/invoice/list">/api/invoice/list</a>
+
+
+        <a class="btn btn-success col-8 mt-3" href="/api/payment/list">/api/payment/list</a>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</section>
+
+
+</body>
+</html>

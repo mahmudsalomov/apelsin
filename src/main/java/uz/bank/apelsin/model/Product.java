@@ -1,9 +1,6 @@
 package uz.bank.apelsin.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import uz.bank.apelsin.model.template.AbsEntityInteger;
 
 import javax.persistence.Column;
@@ -16,10 +13,11 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Product extends AbsEntityInteger {
 
     @NotNull
-    @Column(length = 10)
+    @Column(length = 10,unique = true)
     private String name;
     @ManyToOne
     private Category category;

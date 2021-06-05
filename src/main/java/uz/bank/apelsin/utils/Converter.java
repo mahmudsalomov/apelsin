@@ -1,6 +1,7 @@
 package uz.bank.apelsin.utils;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uz.bank.apelsin.dto.*;
 import uz.bank.apelsin.model.*;
@@ -8,9 +9,17 @@ import uz.bank.apelsin.payload.ApiResponse;
 import uz.bank.apelsin.payload.ApiResponseObject;
 import uz.bank.apelsin.payload.ApiResponseObjectByPageable;
 import uz.bank.apelsin.payload.StatusString;
+import uz.bank.apelsin.repository.DetailRepository;
+import uz.bank.apelsin.repository.ProductRepository;
+
+import java.util.stream.Collectors;
 
 @Component
 public class Converter {
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private DetailRepository detailRepository;
 
     /** For responses **/
 
@@ -37,6 +46,11 @@ public class Converter {
     public ApiResponse apiError(Object object){
         return api(StatusString.FAILED,false,object);
     }
+
+    public ApiResponse apiError(String status, Object object){
+        return api(status,false,object);
+    }
+
 
     public ApiResponse apiSuccess(){
         return api(StatusString.SUCCESS,true);
@@ -103,8 +117,9 @@ public class Converter {
         return OrderDto
                 .builder()
                 .id(order.getId())
-                .customerDto(customerToDto(order.getCustomer()))
+                .cust_id(order.getCustomer().getId())
                 .date(order.getDate())
+                .details(detailRepository.findByOrder(order).stream().map(this::detailToDto).collect(Collectors.toList()))
                 .build();
     }
 
@@ -113,7 +128,7 @@ public class Converter {
         return InvoiceDto
                 .builder()
                 .id(invoice.getId())
-                .orderDto(orderToDto(invoice.getOrder()))
+                .order(orderToDto(invoice.getOrder()))
                 .amount(invoice.getAmount())
                 .issued(invoice.getIssued())
                 .due(invoice.getDue())
@@ -128,7 +143,7 @@ public class Converter {
                 .id(payment.getId())
                 .time(payment.getTime())
                 .amount(payment.getAmount())
-                .invoiceDto(invoiceToDto(payment.getInvoice()))
+                .invoice(invoiceToDto(payment.getInvoice()))
                 .build();
     }
 
@@ -138,8 +153,9 @@ public class Converter {
                 .builder()
                 .id(detail.getId())
                 .quantity(detail.getQuantity())
-                .orderDto(orderToDto(detail.getOrder()))
-                .productDto(productToDto(detail.getProduct()))
+                .order_id(detail.getOrder().getId())
+                .product_id(detail.getProduct().getId())
+                .product_name(detail.getProduct().getName())
                 .build();
     }
 

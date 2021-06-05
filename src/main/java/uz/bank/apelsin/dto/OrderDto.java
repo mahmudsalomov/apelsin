@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,5 +15,7 @@ import java.sql.Date;
 public class OrderDto {
     private Integer id;
     private Date date;
-    private CustomerDto customerDto;
+    private Integer cust_id;
+    private List<DetailDto> details;
+//    private String product_name;
 }
