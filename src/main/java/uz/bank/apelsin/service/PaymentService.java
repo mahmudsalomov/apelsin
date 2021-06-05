@@ -26,7 +26,7 @@ public class PaymentService {
     public ApiResponse payment(Integer invoice_id) {
         try {
             Optional<Invoice> invoice = invoiceRepository.findById(invoice_id);
-            if (invoice.isEmpty())
+            if (!invoice.isPresent())
                 return converter.apiError(
                         "Invoice not found!",new PaymentResponse(StatusString.FAILED,null)
                 );
@@ -56,7 +56,7 @@ public class PaymentService {
     public ApiResponse getPayment(Integer payment_details_id){
         try {
             Optional<Payment> payment = paymentRepository.findById(payment_details_id);
-            if (payment.isEmpty()) return converter.apiError("Payment not found!");
+            if (!payment.isPresent()) return converter.apiError("Payment not found!");
             return converter.apiSuccess(converter.paymentToDto(payment.get()));
         }catch (Exception e){
             e.printStackTrace();

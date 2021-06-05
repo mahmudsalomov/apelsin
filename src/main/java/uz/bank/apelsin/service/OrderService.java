@@ -47,8 +47,8 @@ public class OrderService {
         Optional<Customer> customer = customerRepository.findById(customer_id);
 
         Optional<Product> product = productRepository.findById(product_id);
-        if (customer.isEmpty()) return converter.apiError("Customer not found");
-        if (product.isEmpty()) return converter.apiError("Product not found");
+        if (!customer.isPresent()) return converter.apiError("Customer not found");
+        if (!product.isPresent()) return converter.apiError("Product not found");
 
         try {
             Order order = orderRepository.save(
@@ -88,7 +88,7 @@ public class OrderService {
     public ApiResponse getOrder(Integer order_id){
         try {
             Optional<Order> order = orderRepository.findById(order_id);
-            if (order.isEmpty()) return converter.apiError("Order not found!");
+            if (!order.isPresent()) return converter.apiError("Order not found!");
             List<Detail> details = detailRepository.findByOrder(order.get());
 //            if (detail.get(0).isEmpty()) return converter.apiError();
             OrderDto orderDto = converter.orderToDto(order.get());
